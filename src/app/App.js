@@ -1,17 +1,24 @@
 import React from 'react';
-import { Counter } from '../features/counter/Counter';
-import { Button } from '@mui/material';
 import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Layout from './common/Layout';
+import Home from '../features/home/Home';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Button variant="text">Text</Button>
-        <Counter />
-      </header>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
