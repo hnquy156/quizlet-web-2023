@@ -1,5 +1,14 @@
+import { WrapHeader } from '../../app/assets/styledComponents';
+import HeaderLeft from './HeaderLeft';
+import HeaderRight from './HeaderRight';
+
 const Header = () => {
-  return <div>My Header</div>
-}
+  return (
+    <WrapHeader>
+      <HeaderLeft />
+      <HeaderRight />
+    </WrapHeader>
+  );
+};
 
 export default Header;
