@@ -1,4 +1,4 @@
-import { styled } from '@mui/material';
+import { styled, Card } from '@mui/material';
 
 export const WrapHeader = styled('div')(() => ({
   display: 'flex',
@@ -11,22 +11,25 @@ export const StyledHeaderLeft = styled('div')(() => ({
   display: 'flex',
   position: 'relative',
   flexDirection: 'row',
-  height: 32,
+  height: 48,
   padding: 12,
 }));
 
 export const StyledLibraryButton = styled('div')(() => ({
   position: 'relative',
-  width: 50,
+  display: 'flex',
+  alignItems: 'center',
+  width: 'auto',
   marginRight: 32,
 }));
 
-export const StyledLibraryTabs = styled('div')(() => ({
+export const StyledLibraryTabs = styled(Card)(() => ({
   position: 'absolute',
-  width: 200,
+  width: 400,
   marginRight: 32,
   left: 0,
   top: '120%',
+  border: '1px solid #f8f8f8'
 }));
 
 export const StyledCreateButton = styled('div')(() => ({
