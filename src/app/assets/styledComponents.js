@@ -49,3 +49,11 @@ export const StyledCreateButtonCard = styled(Card)(() => ({
   top: '120%',
   border: '1px solid #f8f8f8',
 }));
+
+export const StyledHeaderRight = styled('div')(() => ({
+  display: 'flex',
+  position: 'relative',
+  flexDirection: 'row',
+  height: 48,
+  padding: 12,
+}));
