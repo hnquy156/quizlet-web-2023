@@ -18,6 +18,7 @@ export const StyledHeaderLeft = styled('div')(() => ({
 export const StyledLibraryButton = styled('div')(() => ({
   position: 'relative',
   display: 'flex',
+  flexDirection: 'row',
   alignItems: 'center',
   width: 'auto',
   marginRight: 32,
@@ -29,12 +30,22 @@ export const StyledLibraryTabs = styled(Card)(() => ({
   marginRight: 32,
   left: 0,
   top: '120%',
-  border: '1px solid #f8f8f8'
+  border: '1px solid #f8f8f8',
 }));
 
 export const StyledCreateButton = styled('div')(() => ({
+  position: 'relative',
   display: 'flex',
   flexDirection: 'row',
-  width: 32,
+  width: 'auto',
   // height: 16,
+}));
+
+export const StyledCreateButtonCard = styled(Card)(() => ({
+  position: 'absolute',
+  width: 400,
+  marginRight: 32,
+  left: 0,
+  top: '120%',
+  border: '1px solid #f8f8f8',
 }));

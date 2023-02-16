@@ -9,7 +9,7 @@ const LibraryButton = () => {
       <Button variant="text" color="inherit">
         Your Library <ExpandMore />
       </Button>
-      {true && <LibraryTabs />}
+      {false && <LibraryTabs />}
     </StyledLibraryButton>
   );
 };
