@@ -27,7 +27,7 @@ const LibraryButton = () => {
       <Button id="library-btn" variant="text" color="inherit" ref={buttonRef}>
         Your Library <ExpandMore />
       </Button>
-      {true && (
+      {isPopover && (
         <div ref={tabsRef}>
           <LibraryTabs />
         </div>

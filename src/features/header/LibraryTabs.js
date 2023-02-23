@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { Box, Button, Link, List, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Link, List, Tab, Tabs } from '@mui/material';
 import TabPanel from '../../app/common/TabPanel';
 import { StyledLibraryTabs } from '../../app/assets/styledComponents';
 import StudySet from '../../app/common/study-sets/StudySet';
+import StudyFolder from '../../app/common/study-sets/StudyFolder';
 
-const LibraryTabs = ({ isShow }) => {
+const LibraryTabs = () => {
   const [value, setValue] = useState(0);
   const handleChange = (e, newValue) => {
-    // console.log('e', e);
     setValue(newValue);
   };
 
@@ -21,7 +21,7 @@ const LibraryTabs = ({ isShow }) => {
         >
           <Tab label="Study Sets" />
           <Tab label="Folders" />
-          <Tab label="Item Three" />
+          {/* <Tab label="Item Three" /> */}
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -35,16 +35,22 @@ const LibraryTabs = ({ isShow }) => {
             <StudySet key={index} />
           ))}
         </List>
-        <Box sx={{ padding: '8px 15px' }}>
-          <Link href="#">View all sets</Link>
-        </Box>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <List
+          sx={{
+            overflow: 'auto',
+            maxHeight: 300,
+          }}
+        >
+          {Array.from(Array(10).keys()).map((item, index) => (
+            <StudyFolder key={index} />
+          ))}
+        </List>
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
+      <Box sx={{ padding: '8px 15px' }}>
+        <Link href="#">View all sets</Link>
+      </Box>
     </StyledLibraryTabs>
   );
 };
