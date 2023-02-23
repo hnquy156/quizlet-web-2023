@@ -5,6 +5,7 @@ export const WrapHeader = styled('div')(() => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   backgroundColor: '#fff',
+  height: '64px',
 }));
 
 export const StyledHeaderLeft = styled('div')(() => ({

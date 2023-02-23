@@ -11,7 +11,7 @@ const CreateStudyButton = () => {
         Create
         <ExpandMore />
       </Button>
-      {true && <CreateStudyButtonCard />}
+      {false && <CreateStudyButtonCard />}
     </StyledCreateButton>
   );
 };
