@@ -1,4 +1,5 @@
 import { styled, Card } from '@mui/material';
+import { Input } from '@mui/joy';
 
 export const WrapHeader = styled('div')(() => ({
   display: 'flex',
@@ -57,4 +58,12 @@ export const StyledHeaderRight = styled('div')(() => ({
   flexDirection: 'row',
   height: 48,
   padding: 12,
+  alignItems: 'center',
+}));
+
+export const StyledSearchInput = styled(Input)(() => ({
+  m: 1,
+  border: 0,
+  bgcolor: '#f6f7fb',
+  borderRadius: 50,
 }));
