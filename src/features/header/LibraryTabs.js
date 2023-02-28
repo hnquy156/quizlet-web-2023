@@ -32,7 +32,7 @@ const LibraryTabs = () => {
           }}
         >
           {Array.from(Array(10).keys()).map((item, index) => (
-            <StudySet key={index} />
+            <StudySet key={index} type={1} />
           ))}
         </List>
       </TabPanel>

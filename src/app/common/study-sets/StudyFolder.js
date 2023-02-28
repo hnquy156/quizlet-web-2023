@@ -1,7 +1,7 @@
-import { Avatar, IconButton, Typography, ListItemButton } from '@mui/material';
+import { Typography, ListItemButton } from '@mui/material';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 
-const url = 'https://mui.com/static/images/avatar/2.jpg';
+// const url = 'https://mui.com/static/images/avatar/2.jpg';
 
 const StudyFolder = () => {
   return (

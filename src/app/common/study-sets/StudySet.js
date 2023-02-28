@@ -1,24 +1,19 @@
-import { Avatar, IconButton, Typography, ListItemButton } from '@mui/material';
+import StudySetType1 from './StudySetType1';
+import StudySetType2 from './StudySetType2';
 
-const url = 'https://mui.com/static/images/avatar/2.jpg';
-
-const StudySet = () => {
-  return (
-    <ListItemButton>
-      <div>
-        <Typography variant="h6" style={{ fontWeight: 600 }}>
-          Study Name
-        </Typography>
-        <div>
-          <IconButton>
-            <Avatar style={{ height: 24, width: 24 }} alt="Logo" src={url} />
-          </IconButton>{' '}
-          <span>User Name</span>
-        </div>
-      </div>
-      <br />
-    </ListItemButton>
-  );
+const StudySet = (props) => {
+  let StudySetComponent = null;
+  switch (props.type) {
+    case 1:
+      StudySetComponent = StudySetType1;
+      break;
+    case 2:
+      StudySetComponent = StudySetType2;
+      break;
+    default:
+      StudySetComponent = StudySetType1;
+  }
+  return <StudySetComponent {...props} />;
 };
 
 export default StudySet;
