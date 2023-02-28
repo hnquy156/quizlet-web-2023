@@ -15,6 +15,7 @@ export const StyledHeaderLeft = styled('div')(() => ({
   flexDirection: 'row',
   height: 48,
   padding: 12,
+  alignItems: 'center',
 }));
 
 export const StyledLibraryButton = styled('div')(() => ({
@@ -23,7 +24,8 @@ export const StyledLibraryButton = styled('div')(() => ({
   flexDirection: 'row',
   alignItems: 'center',
   width: 'auto',
-  marginRight: 32,
+  marginRight: 20,
+  marginLeft: 20,
 }));
 
 export const StyledLibraryTabs = styled(Card)(() => ({
@@ -40,7 +42,7 @@ export const StyledCreateButton = styled('div')(() => ({
   display: 'flex',
   flexDirection: 'row',
   width: 'auto',
-  // height: 16,
+  height: 40,
 }));
 
 export const StyledCreateButtonCard = styled(Card)(() => ({
