@@ -1,25 +1,19 @@
-import { Typography, ListItemButton } from '@mui/material';
-import FolderOpenIcon from '@mui/icons-material/FolderOpen';
+import StudyFolderType1 from './StudyFolderType1';
+import StudyFolderType2 from './StudyFolderType2';
 
-// const url = 'https://mui.com/static/images/avatar/2.jpg';
-
-const StudyFolder = () => {
-  return (
-    <ListItemButton>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <FolderOpenIcon style={{ marginRight: 4, fontSize: 40 }} />
-        <div>
-          <div>
-            <Typography variant="h6" style={{ fontWeight: 600 }}>
-              Folder Name
-            </Typography>
-          </div>
-          <span>6 Sets</span>
-        </div>
-      </div>
-      <br />
-    </ListItemButton>
-  );
+const StudyFolder = (props) => {
+  let StudySetComponent = null;
+  switch (props.type) {
+    case 1:
+      StudySetComponent = StudyFolderType1;
+      break;
+    case 2:
+      StudySetComponent = StudyFolderType2;
+      break;
+    default:
+      StudySetComponent = StudyFolderType1;
+  }
+  return <StudySetComponent {...props} />;
 };
 
 export default StudyFolder;
