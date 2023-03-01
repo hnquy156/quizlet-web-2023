@@ -1,5 +1,7 @@
+import { WrapFooter } from '../../app/assets/styledComponents';
+
 const Footer = () => {
-  return <div>My Footer</div>;
+  return <WrapFooter>Quizlet 02/2023, Practical Pet Project</WrapFooter>;
 };
 
 export default Footer;

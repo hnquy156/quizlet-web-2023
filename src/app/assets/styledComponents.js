@@ -69,3 +69,12 @@ export const StyledSearchInput = styled(Input)(() => ({
   bgcolor: '#f6f7fb',
   borderRadius: 50,
 }));
+
+export const WrapFooter = styled('div')(() => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  backgroundColor: '#fff',
+  height: '24px',
+  padding: '0 14px',
+}));
