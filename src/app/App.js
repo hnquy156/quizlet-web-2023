@@ -3,6 +3,9 @@ import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './common/Layout';
 import Home from '../features/home/Home';
+import User from '../features/user/User';
+import UserTabs from '../features/user/UserTabs';
+import FolderTab from '../features/user/FolderTab';
 
 const router = createBrowserRouter([
   {
@@ -12,6 +15,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: ':username',
+        element: <User />,
+        children: [
+          { path: 'sets', element: <UserTabs /> },
+          { path: 'folders', element: <FolderTab /> },
+        ],
       },
     ],
   },
