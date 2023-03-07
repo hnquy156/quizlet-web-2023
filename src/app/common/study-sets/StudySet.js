@@ -1,5 +1,6 @@
 import StudySetType1 from './StudySetType1';
 import StudySetType2 from './StudySetType2';
+import StudySetType3 from './StudySetType3';
 
 const StudySet = (props) => {
   let StudySetComponent = null;
@@ -9,6 +10,9 @@ const StudySet = (props) => {
       break;
     case 2:
       StudySetComponent = StudySetType2;
+      break;
+    case 3:
+      StudySetComponent = StudySetType3;
       break;
     default:
       StudySetComponent = StudySetType1;

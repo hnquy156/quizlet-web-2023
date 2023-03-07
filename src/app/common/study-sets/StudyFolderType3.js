@@ -1,18 +1,10 @@
 import { Typography, ListItemButton, Box } from '@mui/material';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
+import { sxButtonItem } from '../../assets/styledSx';
 
 const StudyFolderType3 = ({ index }) => {
   return (
-    <ListItemButton
-      sx={{
-        bgcolor: '#fff',
-        mb: 1,
-        borderRadius: 2,
-        '&:hover': {
-          boxShadow: 3,
-        },
-      }}
-    >
+    <ListItemButton sx={sxButtonItem}>
       <Box sx={{ width: '100%' }}>
         <Typography variant="body2" fontWeight={600}>
           50 sets

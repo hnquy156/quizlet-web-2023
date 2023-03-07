@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './common/Layout';
 import Home from '../features/home/Home';
 import User from '../features/user/User';
-import UserTabs from '../features/user/UserTabs';
+import StudySetTab from '../features/user/StudySetTab';
 import FolderTab from '../features/user/FolderTab';
 
 const router = createBrowserRouter([
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         path: ':username',
         element: <User />,
         children: [
-          { path: 'sets', element: <UserTabs /> },
+          { path: 'sets', element: <StudySetTab /> },
           { path: 'folders', element: <FolderTab /> },
         ],
       },
