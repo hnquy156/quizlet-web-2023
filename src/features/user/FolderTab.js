@@ -7,7 +7,7 @@ const FolderTab = () => {
       <h1>User Tabs Folder</h1>
       <List>
         {Array.from(Array(5).keys()).map((item, index) => (
-          <StudyFolder type={3} />
+          <StudyFolder key={index} type={3} />
         ))}
       </List>
     </div>

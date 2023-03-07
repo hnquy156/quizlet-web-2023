@@ -7,7 +7,7 @@ const StudySetTab = () => {
       <h1>Study Set Tabs </h1>
       <List>
         {Array.from(Array(5).keys()).map((item, index) => (
-          <StudySet type={3} />
+          <StudySet key={index} type={3} />
         ))}
       </List>
     </div>

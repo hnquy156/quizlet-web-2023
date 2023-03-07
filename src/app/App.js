@@ -6,6 +6,7 @@ import Home from '../features/home/Home';
 import User from '../features/user/User';
 import StudySetTab from '../features/user/StudySetTab';
 import FolderTab from '../features/user/FolderTab';
+import { USER_ROUTES } from './utils/constant';
 
 const router = createBrowserRouter([
   {
@@ -20,8 +21,8 @@ const router = createBrowserRouter([
         path: ':username',
         element: <User />,
         children: [
-          { path: 'sets', element: <StudySetTab /> },
-          { path: 'folders', element: <FolderTab /> },
+          { path: USER_ROUTES.SET, element: <StudySetTab /> },
+          { path: USER_ROUTES.FOLDER, element: <FolderTab /> },
         ],
       },
     ],
