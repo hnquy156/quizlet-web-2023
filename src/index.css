@@ -13,6 +13,7 @@ code {
     monospace;
 }
 
-.main-logo  {
+.main-logo {
   width: 100px;
+  cursor: pointer;
 }

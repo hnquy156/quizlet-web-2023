@@ -14,9 +14,11 @@ const LibraryButton = () => {
     setIsPopover(!isPopover);
   };
 
+  const handleClosePopover = () => setIsPopover(false);
+
   const handleClickOutsideButton = (e) => {
     if (tabsRef?.current && !tabsRef.current?.contains(e.target)) {
-      setIsPopover(false);
+      handleClosePopover();
     }
   };
 
@@ -29,7 +31,7 @@ const LibraryButton = () => {
       </Button>
       {isPopover && (
         <div ref={tabsRef}>
-          <LibraryTabs />
+          <LibraryTabs onClose={handleClosePopover} />
         </div>
       )}
     </StyledLibraryButton>

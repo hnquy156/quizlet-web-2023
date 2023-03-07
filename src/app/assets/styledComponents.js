@@ -1,5 +1,6 @@
 import { styled, Card } from '@mui/material';
 import { Input } from '@mui/joy';
+import { Link } from 'react-router-dom';
 
 export const WrapHeader = styled('div')(() => ({
   display: 'flex',
@@ -35,6 +36,8 @@ export const StyledLibraryTabs = styled(Card)(() => ({
   left: 0,
   top: '120%',
   border: '1px solid #f8f8f8',
+  zIndex: 1,
+  boxShadow: '0px 10px 15px 0px rgb(38, 57, 77)',
 }));
 
 export const StyledCreateButton = styled('div')(() => ({
@@ -77,4 +80,9 @@ export const WrapFooter = styled('div')(() => ({
   backgroundColor: '#fff',
   height: '24px',
   padding: '0 14px',
+}));
+
+export const StyledLink = styled(Link)(() => ({
+  color: '#1976d2',
+  textDecoration: 'none',
 }));
