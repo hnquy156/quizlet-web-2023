@@ -1,4 +1,4 @@
-import { StyledHeaderRight } from '../../app/assets/styledComponents';
+import { StyledHeaderRight } from '../styles/styledComponents';
 import SearchBox from './SearchBox';
 import SettingButton from './SettingButton';
 

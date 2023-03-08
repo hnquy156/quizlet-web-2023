@@ -1,4 +1,4 @@
-import { StyledHeaderLeft } from '../../app/assets/styledComponents';
+import { StyledHeaderLeft } from '../styles/styledComponents';
 import CreateStudyButton from './CreateStudyButton';
 import LibraryButton from './LibraryButton';
 import QuizletLogo from './QuizletLogo';

@@ -1,5 +1,5 @@
 import { List } from '@mui/material';
-import StudyFolder from '../../app/common/study-sets/StudyFolder';
+import StudyFolder from '../../study-folders/StudyFolder';
 
 const FolderTab = () => {
   return (

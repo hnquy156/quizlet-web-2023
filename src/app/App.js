@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Layout from './common/Layout';
-import Home from '../features/pages/Home';
-import User from '../features/pages/user/User';
-import StudySetTab from '../features/user/StudySetTab';
-import FolderTab from '../features/user/FolderTab';
-import { USER_ROUTES } from './utils/constant';
-import Folder from '../features/pages/user/Folder';
+import Layout from '../components/common/Layout';
+import Home from '../components/pages/Home';
+import User from '../components/pages/user/User';
+import StudySetTab from '../components/pages/user/StudySetTab';
+import FolderTab from '../components/pages/user/FolderTab';
+import { USER_ROUTES } from '../utils/constant';
+import Folder from '../components/pages/user/Folder';
 
 const router = createBrowserRouter([
   {

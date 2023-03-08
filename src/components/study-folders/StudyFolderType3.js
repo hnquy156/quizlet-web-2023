@@ -1,6 +1,6 @@
 import { Typography, ListItemButton, Box } from '@mui/material';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
-import { sxButtonItem } from '../../assets/styledSx';
+import { sxButtonItem } from '../styles/styledSx';
 
 const StudyFolderType3 = ({ index }) => {
   return (

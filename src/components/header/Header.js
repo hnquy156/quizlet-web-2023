@@ -1,4 +1,4 @@
-import { WrapHeader } from '../../app/assets/styledComponents';
+import { WrapHeader } from '../styles/styledComponents';
 import HeaderLeft from './HeaderLeft';
 import HeaderRight from './HeaderRight';
 

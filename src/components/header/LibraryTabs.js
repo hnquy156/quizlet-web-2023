@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Box, List, Tab, Tabs } from '@mui/material';
-import TabPanel from '../../app/common/TabPanel';
+import TabPanel from '../common/TabPanel';
 import {
   StyledLibraryTabs,
   StyledLink,
-} from '../../app/assets/styledComponents';
-import StudySet from '../../app/common/study-sets/StudySet';
-import StudyFolder from '../../app/common/study-sets/StudyFolder';
+} from '../styles/styledComponents';
+import StudySet from '../study-sets/StudySet';
+import StudyFolder from '../study-folders/StudyFolder';
 
 const LibraryTabs = ({ onClose }) => {
   const [value, setValue] = useState(0);

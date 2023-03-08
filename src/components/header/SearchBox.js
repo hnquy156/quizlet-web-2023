@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Search as SearchIcon, Close as CloseIcon } from '@mui/icons-material';
-import { StyledSearchInput } from '../../app/assets/styledComponents';
+import { StyledSearchInput } from '../styles/styledComponents';
 
 const SearchBox = () => {
   const [isFocused, setIsFocused] = useState(false);

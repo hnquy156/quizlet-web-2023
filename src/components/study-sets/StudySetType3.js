@@ -1,5 +1,5 @@
 import { Typography, ListItemButton, Box } from '@mui/material';
-import { sxButtonItem } from '../../assets/styledSx';
+import { sxButtonItem } from '../styles/styledSx';
 
 const StudySetType3 = ({ index }) => {
   return (

@@ -1,9 +1,9 @@
 import { Button } from '@mui/material';
 import LibraryTabs from './LibraryTabs';
-import { StyledLibraryButton } from '../../app/assets/styledComponents';
+import { StyledLibraryButton } from '../styles/styledComponents';
 import { ExpandMore } from '@mui/icons-material';
 import React, { useRef, useState } from 'react';
-import useClickOutside from '../../app/utils/hooks/useClickOutside';
+import useClickOutside from '../../utils/hooks/useClickOutside';
 
 const LibraryButton = () => {
   const [isPopover, setIsPopover] = useState(false);

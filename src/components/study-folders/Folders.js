@@ -1,5 +1,5 @@
 import { Box, Grid } from '@mui/material';
-import StudyFolder from '../../app/common/study-sets/StudyFolder';
+import StudyFolder from './StudyFolder';
 
 const Folders = ({ title }) => {
   return (

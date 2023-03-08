@@ -1,5 +1,5 @@
 import { List } from '@mui/material';
-import StudySet from '../../app/common/study-sets/StudySet';
+import StudySet from '../../study-sets/StudySet';
 
 const StudySetTab = () => {
   return (

@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import Folders from '../study-sets/Folders';
+import Folders from '../study-folders/Folders';
 import StudySets from '../study-sets/StudySets';
 
 const Home = () => {

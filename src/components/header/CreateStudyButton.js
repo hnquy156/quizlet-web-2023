@@ -1,8 +1,8 @@
 import { ExpandMore, FilterNone, FolderOpen } from '@mui/icons-material';
 import { Button, List, ListItemButton, Popover } from '@mui/material';
 import { useId, useState } from 'react';
-import { StyledCreateButton } from '../../app/assets/styledComponents';
-import { anchorOriginDefault } from '../../app/utils/constant';
+import { StyledCreateButton } from '../styles/styledComponents';
+import { anchorOriginDefault } from '../../utils/constant';
 
 const CreateStudyButton = () => {
   const id = useId();
