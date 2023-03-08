@@ -1,8 +1,8 @@
 import { Avatar, Box, Tab, Tabs, Typography } from '@mui/material';
 import { useState } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { USER_ROUTES } from '../../app/utils/constant';
-import { getCurrentTab } from './handler';
+import { USER_ROUTES } from '../../../app/utils/constant';
+import { getCurrentTab } from '../../user/handler';
 
 const url = 'https://mui.com/static/images/avatar/2.jpg';
 
