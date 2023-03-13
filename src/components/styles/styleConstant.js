@@ -1,0 +1,1 @@
+export const DEFAULT_BORDER = '1px solid #d9dde8'

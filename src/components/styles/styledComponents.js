@@ -1,6 +1,7 @@
 import { styled, Card, IconButton } from '@mui/material';
 import { Input } from '@mui/joy';
 import { Link } from 'react-router-dom';
+import { DEFAULT_BORDER } from './styleConstant';
 
 export const WrapHeader = styled('div')(() => ({
   display: 'flex',
@@ -13,7 +14,7 @@ export const WrapHeader = styled('div')(() => ({
   left: 0,
   right: 0,
   zIndex: 2,
-  border: '1px solid #d9dde8',
+  border: DEFAULT_BORDER,
 }));
 
 export const StyledHeaderLeft = styled('div')(() => ({
@@ -41,7 +42,7 @@ export const StyledLibraryTabs = styled(Card)(() => ({
   marginRight: 32,
   left: 0,
   top: '120%',
-  border: '1px solid #f8f8f8',
+  border: DEFAULT_BORDER,
   zIndex: 1,
   boxShadow: '0px 10px 15px 0px rgb(38, 57, 77)',
 }));
@@ -60,7 +61,7 @@ export const StyledCreateButtonCard = styled(Card)(() => ({
   marginRight: 32,
   left: 0,
   top: '120%',
-  border: '1px solid #f8f8f8',
+  border: DEFAULT_BORDER,
 }));
 
 export const StyledHeaderRight = styled('div')(() => ({
@@ -90,7 +91,7 @@ export const WrapFooter = styled('div')(() => ({
   bottom: 0,
   left: 0,
   right: 0,
-  border: '1px solid #d9dde8',
+  border: DEFAULT_BORDER,
 }));
 
 export const StyledLink = styled(Link)(() => ({
@@ -100,6 +101,6 @@ export const StyledLink = styled(Link)(() => ({
 
 export const StyledIconButton = styled(IconButton)(() => ({
   backgroundColor: '#fff',
-  border: '1px solid #d9dde8',
+  border: DEFAULT_BORDER,
   marginLeft: 8,
 }));
