@@ -1,4 +1,4 @@
-import { styled, Card } from '@mui/material';
+import { styled, Card, IconButton } from '@mui/material';
 import { Input } from '@mui/joy';
 import { Link } from 'react-router-dom';
 
@@ -85,4 +85,10 @@ export const WrapFooter = styled('div')(() => ({
 export const StyledLink = styled(Link)(() => ({
   color: '#1976d2',
   textDecoration: 'none',
+}));
+
+export const StyledIconButton = styled(IconButton)(() => ({
+  backgroundColor: '#fff',
+  border: '1px solid #d9dde8',
+  marginLeft: 8,
 }));
