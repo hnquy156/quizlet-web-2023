@@ -8,6 +8,12 @@ export const WrapHeader = styled('div')(() => ({
   alignItems: 'center',
   backgroundColor: '#fff',
   height: '64px',
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  zIndex: 2,
+  border: '1px solid #d9dde8',
 }));
 
 export const StyledHeaderLeft = styled('div')(() => ({
@@ -80,6 +86,11 @@ export const WrapFooter = styled('div')(() => ({
   backgroundColor: '#fff',
   height: '24px',
   padding: '0 14px',
+  position: 'fixed',
+  bottom: 0,
+  left: 0,
+  right: 0,
+  border: '1px solid #d9dde8',
 }));
 
 export const StyledLink = styled(Link)(() => ({
