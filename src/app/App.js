@@ -12,6 +12,8 @@ import StudySetTab from '../components/pages/user/StudySetTab';
 import FolderTab from '../components/pages/user/FolderTab';
 import { USER_ROUTES } from '../utils/constant';
 import Folder from '../components/pages/user/Folder';
+import StudySetDetail from '../components/pages/study-set/StudySetDetail';
+import StudySetEdit from '../components/pages/study-set/StudySetEdit';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
           { path: USER_ROUTES.SET, element: <StudySetTab /> },
           { path: USER_ROUTES.FOLDER, element: <FolderTab /> },
         ],
+      },
+      {
+        path: 'study-set/:id',
+        element: <StudySetDetail />,
+      },
+      {
+        path: 'study-set/:id/:status',
+        element: <StudySetEdit />,
       },
       { path: `:username/${USER_ROUTES.FOLDER}/:folder`, element: <Folder /> },
     ],

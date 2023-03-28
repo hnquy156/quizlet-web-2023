@@ -104,3 +104,26 @@ export const StyledIconButton = styled(IconButton)(() => ({
   border: DEFAULT_BORDER,
   marginLeft: 8,
 }));
+
+export const StyledFlashCard = styled(Card)(() => ({
+  backgroundColor: '#fff',
+  border: DEFAULT_BORDER,
+  width: '100%',
+  height: 200,
+  position: 'relative',
+  cursor: 'pointer',
+  '& p': {
+    fontSize: 28,
+    margin: 0,
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
+  '& button': {
+    position: 'absolute',
+    top: 2,
+    right: 2,
+    zIndex: 3,
+  },
+}));
