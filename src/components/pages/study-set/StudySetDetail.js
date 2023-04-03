@@ -1,4 +1,5 @@
 import { Box } from '@mui/material';
+import FlashCards from '../../flashcard/brief-flashcard/FlashCards';
 import FCDescription from '../../flashcard/FCDescription';
 import FCModeButtonGroup from '../../flashcard/FCModeButtonGroup';
 import FlashCardGroup from '../../flashcard/flash-card-group/FlashCardGroup';
@@ -11,7 +12,7 @@ const StudySetDetail = () => {
       <FlashCardGroup />
       <Box mt={4}>
         <FCDescription />
-        <div>FC Table contain Items</div>
+        <FlashCards />
       </Box>
     </Box>
   );

@@ -127,3 +127,16 @@ export const StyledFlashCard = styled(Card)(() => ({
     zIndex: 3,
   },
 }));
+
+export const StyledBriefCard = styled('div')(() => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  border: DEFAULT_BORDER,
+  zIndex: 1,
+  boxShadow: '0px 1px 1px 0px #d9dde8',
+  marginBottom: 8,
+  backgroundColor: 'white',
+  padding: 15,
+  borderRadius: 5,
+}));
