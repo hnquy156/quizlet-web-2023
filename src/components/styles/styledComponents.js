@@ -95,7 +95,8 @@ export const WrapFooter = styled('div')(() => ({
 }));
 
 export const StyledLink = styled(Link)(() => ({
-  color: '#1976d2',
+  color: '#4255FF',
+  fontWeight: 'bold',
   textDecoration: 'none',
 }));
 
