@@ -15,7 +15,11 @@ const Title = () => {
         </Typography>
         <Button variant="contained">Create</Button>
       </Box>
-      <TextField label="Title" variant="standard" sx={{ width: '50%' }} />
+      <TextField
+        label="Title"
+        variant="standard"
+        sx={{ width: '50%', mb: 1 }}
+      />
       <TextField label="Description" variant="standard" sx={{ width: '50%' }} />
     </Box>
   );
