@@ -17,7 +17,6 @@ const FlashCardTable = () => {
   const [flashcards, setFlashcards] = useState(MOCK_DATA);
 
   useEffect(() => {
-    console.log('children', ref?.current?.children?.length);
     const children = ref?.current?.children || [];
     const offsetTops = [];
     for (let i = 0; i < children?.length; i++) {

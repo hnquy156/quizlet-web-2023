@@ -4,7 +4,7 @@ import {
   DragHandle as DragHandleIcon,
 } from '@mui/icons-material';
 import Draggable from 'react-draggable';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const FlashCard = ({
   index,
@@ -16,6 +16,7 @@ const FlashCard = ({
 }) => {
   const [zIndex, setZIndex] = useState(1);
   const [border, setBorder] = useState(null);
+  const ref = useRef();
 
   const handleDrop = (event, data) => {
     setZIndex(1);
@@ -35,6 +36,7 @@ const FlashCard = ({
       onStart={handleStartDrag}
       onStop={handleDrop}
       zIndex={zIndex}
+      nodeRef={ref}
     >
       <Box
         {...props}
@@ -46,6 +48,7 @@ const FlashCard = ({
         zIndex={zIndex}
         border={border}
         position="relative"
+        ref={ref}
       >
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <Typography>{index + 1}</Typography>
