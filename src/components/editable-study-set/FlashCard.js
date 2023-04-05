@@ -1,50 +1,88 @@
 import { Box, Divider, IconButton, TextField, Typography } from '@mui/material';
-import { DeleteOutline as DeleteIcon } from '@mui/icons-material';
+import {
+  DeleteOutline as DeleteIcon,
+  DragHandle as DragHandleIcon,
+} from '@mui/icons-material';
+import Draggable from 'react-draggable';
+import { useState } from 'react';
 
-const FlashCard = ({ orderNumber, term, definition, ...props }) => {
+const FlashCard = ({
+  index,
+  term,
+  definition,
+  positionY,
+  onDrop,
+  ...props
+}) => {
+  const [zIndex, setZIndex] = useState(1);
+  const [border, setBorder] = useState(null);
+
+  const handleDrop = (event, data) => {
+    setZIndex(1);
+    onDrop(index, positionY + data.y);
+    setBorder(null);
+  };
+  const handleStartDrag = () => {
+    setZIndex(3);
+    setBorder('1px solid blue');
+  };
+
   return (
-    <Box
-      {...props}
-      bgcolor="#fff"
-      borderRadius={2}
-      p={2}
-      paddingLeft={4}
-      paddingRight={4}
+    <Draggable
+      axis="y"
+      handle=".handle"
+      position={{ x: 0, y: 0 }}
+      onStart={handleStartDrag}
+      onStop={handleDrop}
+      zIndex={zIndex}
     >
-      <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Typography>{orderNumber}</Typography>
-        <Box>
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
+      <Box
+        {...props}
+        bgcolor="#fff"
+        borderRadius={2}
+        p={2}
+        paddingLeft={4}
+        paddingRight={4}
+        zIndex={zIndex}
+        border={border}
+        position="relative"
+      >
+        <Box display="flex" alignItems="center" justifyContent="space-between">
+          <Typography>{index + 1}</Typography>
+          <Box>
+            <IconButton className="handle">
+              <DragHandleIcon />
+            </IconButton>
+            <IconButton>
+              <DeleteIcon />
+            </IconButton>
+          </Box>
+        </Box>
+        <Divider />
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          width="100%"
+          mt={2}
+        >
+          <TextField
+            label="Enter term"
+            variant="standard"
+            sx={{ width: '50%', mr: 4 }}
+            helperText="TERM"
+            value={term}
+          />
+          <TextField
+            label="Enter definition"
+            variant="standard"
+            sx={{ width: '50%' }}
+            helperText="DEFINITION"
+            value={definition}
+          />
         </Box>
       </Box>
-      <Divider />
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-        width="100%"
-        mt={2}
-      >
-        <TextField
-          label="Enter term"
-          variant="standard"
-          sx={{ width: '50%', mr: 4 }}
-          helperText="TERM"
-        >
-          {term}
-        </TextField>
-        <TextField
-          label="Enter definition"
-          variant="standard"
-          sx={{ width: '50%' }}
-          helperText="DEFINITION"
-        >
-          {definition}
-        </TextField>
-      </Box>
-    </Box>
+    </Draggable>
   );
 };
 
