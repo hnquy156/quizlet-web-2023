@@ -8,7 +8,9 @@ import {
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import { LockPerson as LockPersonIcon } from '@mui/icons-material';
 
-const StudyFolderType2 = ({ index }) => {
+const StudyFolderType2 = ({ folder }) => {
+  const { name, length } = folder;
+
   return (
     <Card sx={{ maxWidth: 300 }}>
       <CardActionArea>
@@ -25,7 +27,7 @@ const StudyFolderType2 = ({ index }) => {
             />
             <Box>
               <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                Study Folder Name {index}
+                {name}
               </Typography>
               <Box
                 sx={{
@@ -35,7 +37,7 @@ const StudyFolderType2 = ({ index }) => {
                   alignItems: 'center',
                 }}
               >
-                <Typography variant="body2">50 sets</Typography>
+                <Typography variant="body2">{length} sets</Typography>
                 <LockPersonIcon sx={{ fontSize: 20, marginLeft: 1 }} />
               </Box>
             </Box>
