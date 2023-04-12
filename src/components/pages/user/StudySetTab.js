@@ -1,15 +1,32 @@
 import { List } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { fetchStudySets } from '../../../app/api';
+import CircularLoading from '../../common/CircularLoading';
 import StudySet from '../../study-sets/StudySet';
 
 const StudySetTab = () => {
+  const [studySets, setStudySets] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getStudySets();
+  }, []);
+
+  const getStudySets = async () => {
+    setLoading(true);
+    const { success, data } = await fetchStudySets();
+    if (success) setStudySets(data);
+    setLoading(false);
+  };
+
   return (
     <div>
-      <h1>Study Set Tabs </h1>
       <List>
-        {Array.from(Array(5).keys()).map((item, index) => (
-          <StudySet key={index} type={3} />
+        {studySets.map((studySet, index) => (
+          <StudySet key={index} type={3} studySet={studySet} />
         ))}
       </List>
+      <CircularLoading loading={loading} mt={2} />
     </div>
   );
 };

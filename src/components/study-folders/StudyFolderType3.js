@@ -2,19 +2,21 @@ import { Typography, ListItemButton, Box } from '@mui/material';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import { sxButtonItem } from '../styles/styledSx';
 
-const StudyFolderType3 = ({ index }) => {
+const StudyFolderType3 = ({ folder }) => {
+  const { name, length } = folder;
+
   return (
     <ListItemButton sx={sxButtonItem}>
       <Box sx={{ width: '100%' }}>
         <Typography variant="body2" fontWeight={600}>
-          50 sets
+          {length} sets
         </Typography>
         <Box display="flex" alignItems="center">
           <FolderOpenIcon
             sx={{ fontSize: 30, marginRight: 1, color: 'grey' }}
           />
           <Typography variant="h6" sx={{ fontWeight: 600 }}>
-            Study Folder Name {index}
+            {name}
           </Typography>
         </Box>
       </Box>
