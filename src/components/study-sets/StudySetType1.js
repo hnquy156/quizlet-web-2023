@@ -1,19 +1,19 @@
 import { Avatar, IconButton, Typography, ListItemButton } from '@mui/material';
 
-const url = 'https://mui.com/static/images/avatar/2.jpg';
+const StudySetType1 = ({ studySet }) => {
+  const { name, username, avatar } = studySet;
 
-const StudySetType1 = () => {
   return (
     <ListItemButton>
       <div>
         <Typography variant="h6" style={{ fontWeight: 600 }}>
-          Study Name
+          {name}
         </Typography>
         <div>
           <IconButton>
-            <Avatar style={{ height: 24, width: 24 }} alt="Logo" src={url} />
+            <Avatar style={{ height: 24, width: 24 }} alt="Logo" src={avatar} />
           </IconButton>{' '}
-          <span>User Name</span>
+          <span>{username}</span>
         </div>
       </div>
       <br />

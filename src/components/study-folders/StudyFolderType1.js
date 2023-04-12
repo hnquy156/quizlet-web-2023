@@ -3,7 +3,9 @@ import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 
 // const url = 'https://mui.com/static/images/avatar/2.jpg';
 
-const StudyFolderType1 = () => {
+const StudyFolderType1 = ({ folder }) => {
+  const { name, length } = folder;
+
   return (
     <ListItemButton>
       <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -11,10 +13,10 @@ const StudyFolderType1 = () => {
         <div>
           <div>
             <Typography variant="h6" style={{ fontWeight: 600 }}>
-              Folder Name
+              {name}
             </Typography>
           </div>
-          <span>6 Sets</span>
+          <span>{length} Sets</span>
         </div>
       </div>
       <br />

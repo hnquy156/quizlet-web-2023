@@ -1,24 +1,67 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, List, Tab, Tabs } from '@mui/material';
 import TabPanel from '../common/TabPanel';
-import {
-  StyledLibraryTabs,
-  StyledLink,
-} from '../styles/styledComponents';
+import { StyledLibraryTabs, StyledLink } from '../styles/styledComponents';
 import StudySet from '../study-sets/StudySet';
 import StudyFolder from '../study-folders/StudyFolder';
+import { fetchStudySets } from '../../app/api/study-set';
+import { fetchFolders } from '../../app/api/folder';
+import CircularLoading from '../common/CircularLoading';
+
+const TABS = {
+  STUDY_SET: 0,
+  FOLDER: 1,
+};
+
+let activeTabFlag;
 
 const LibraryTabs = ({ onClose }) => {
-  const [value, setValue] = useState(0);
-  const handleChange = (e, newValue) => {
-    setValue(newValue);
+  const [activeTab, setActiveTab] = useState(TABS.STUDY_SET);
+  const [loading, setLoading] = useState(false);
+  const [studySets, setStudySets] = useState([]);
+  const [folders, setFolders] = useState([]);
+
+  useEffect(() => {
+    if (activeTab === TABS.FOLDER) {
+      setFolders([]);
+      getFolders(activeTab);
+    } else {
+      setStudySets([]);
+      getStudySets(activeTab);
+    }
+  }, [activeTab]);
+
+  const getStudySets = async (activedTab) => {
+    setLoading(true);
+    activeTabFlag = activedTab;
+    const { success, data } = await fetchStudySets();
+
+    if (activeTabFlag !== activedTab) return;
+
+    if (success) setStudySets(data);
+    setLoading(false);
+  };
+
+  const getFolders = async (activedTab) => {
+    setLoading(true);
+    activeTabFlag = activedTab;
+    const { success, data } = await fetchFolders();
+
+    if (activeTabFlag !== activedTab) return;
+
+    if (success) setFolders(data);
+    setLoading(false);
+  };
+
+  const handleChange = (e, newActiveTab) => {
+    setActiveTab(newActiveTab);
   };
 
   return (
     <StyledLibraryTabs>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
-          value={value}
+          value={activeTab}
           onChange={handleChange}
           aria-label="basic tabs example"
         >
@@ -26,15 +69,16 @@ const LibraryTabs = ({ onClose }) => {
           <Tab label="Folders" />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={activeTab} index={TABS.STUDY_SET}>
+        <CircularLoading loading={loading} mt={2} />
         <List
           sx={{
             overflow: 'auto',
             maxHeight: 300,
           }}
         >
-          {Array.from(Array(10).keys()).map((item, index) => (
-            <StudySet key={index} type={1} />
+          {studySets.map((studySet, index) => (
+            <StudySet key={index} type={1} studySet={studySet} />
           ))}
         </List>
         <Box sx={{ padding: '8px 15px' }}>
@@ -43,15 +87,16 @@ const LibraryTabs = ({ onClose }) => {
           </StyledLink>
         </Box>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={activeTab} index={TABS.FOLDER}>
+        <CircularLoading loading={loading} mt={2} />
         <List
           sx={{
             overflow: 'auto',
             maxHeight: 300,
           }}
         >
-          {Array.from(Array(10).keys()).map((item, index) => (
-            <StudyFolder key={index} />
+          {folders.map((folder, index) => (
+            <StudyFolder key={index} folder={folder} />
           ))}
         </List>
         <Box sx={{ padding: '8px 15px' }}>
