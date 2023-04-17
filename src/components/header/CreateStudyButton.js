@@ -4,8 +4,10 @@ import { useId, useState } from 'react';
 import { StyledCreateButton } from '../styles/styledComponents';
 import { anchorOriginDefault } from '../../utils/constant';
 import CreateFolderModal from './CreateFolderModal';
+import { useNavigate } from 'react-router-dom';
 
 const CreateStudyButton = () => {
+  const navigate = useNavigate();
   const id = useId();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -28,6 +30,11 @@ const CreateStudyButton = () => {
     setOpenFolderModal(false);
   };
 
+  const handleCreatingStudySet = () => {
+    handleClose();
+    navigate(`/study-set/id/new`);
+  };
+
   return (
     <StyledCreateButton>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
@@ -42,7 +49,7 @@ const CreateStudyButton = () => {
         anchorOrigin={anchorOriginDefault}
       >
         <List>
-          <ListItemButton>
+          <ListItemButton onClick={handleCreatingStudySet}>
             <FilterNone sx={{ mr: 1 }} /> Study Set
           </ListItemButton>
           <ListItemButton onClick={handleOpenCreatingFolderModal}>
