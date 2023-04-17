@@ -8,11 +8,11 @@ import {
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import { LockPerson as LockPersonIcon } from '@mui/icons-material';
 
-const StudyFolderType2 = ({ folder }) => {
+const StudyFolderType2 = ({ folder, ...props }) => {
   const { name, length } = folder;
 
   return (
-    <Card sx={{ maxWidth: 300 }}>
+    <Card {...props} sx={{ maxWidth: 300 }}>
       <CardActionArea>
         <CardContent>
           <Box

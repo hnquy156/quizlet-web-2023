@@ -3,11 +3,11 @@ import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 
 // const url = 'https://mui.com/static/images/avatar/2.jpg';
 
-const StudyFolderType1 = ({ folder }) => {
+const StudyFolderType1 = ({ folder, ...props }) => {
   const { name, length } = folder;
 
   return (
-    <ListItemButton>
+    <ListItemButton {...props}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <FolderOpenIcon style={{ marginRight: 4, fontSize: 40 }} />
         <div>

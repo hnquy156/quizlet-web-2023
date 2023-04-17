@@ -64,6 +64,11 @@ const LibraryTabs = ({ onClose }) => {
     navigate(`/study-set/${index}`);
   };
 
+  const handleClickFolder = (index) => {
+    onClose();
+    navigate(`/username/folders/${index}`);
+  };
+
   return (
     <StyledLibraryTabs>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -108,7 +113,11 @@ const LibraryTabs = ({ onClose }) => {
           }}
         >
           {folders.map((folder, index) => (
-            <StudyFolder key={index} folder={folder} />
+            <StudyFolder
+              key={index}
+              folder={folder}
+              onClick={() => handleClickFolder(index)}
+            />
           ))}
         </List>
         <Box sx={{ padding: '8px 15px' }}>
