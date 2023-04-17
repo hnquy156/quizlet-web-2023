@@ -8,11 +8,11 @@ import {
 } from '@mui/material';
 import { LockPerson as LockPersonIcon } from '@mui/icons-material';
 
-const StudySetType2 = ({ studySet }) => {
+const StudySetType2 = ({ studySet, ...props }) => {
   const { name, length, username, avatar } = studySet;
 
   return (
-    <Card sx={{ maxWidth: 300 }}>
+    <Card {...props} sx={{ maxWidth: 300 }}>
       <CardActionArea>
         <CardContent>
           <Typography variant="h6" sx={{ fontWeight: 600 }}>

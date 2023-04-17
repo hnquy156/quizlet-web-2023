@@ -1,10 +1,10 @@
 import { Avatar, IconButton, Typography, ListItemButton } from '@mui/material';
 
-const StudySetType1 = ({ studySet }) => {
+const StudySetType1 = ({ studySet, ...props }) => {
   const { name, username, avatar } = studySet;
 
   return (
-    <ListItemButton>
+    <ListItemButton {...props}>
       <div>
         <Typography variant="h6" style={{ fontWeight: 600 }}>
           {name}

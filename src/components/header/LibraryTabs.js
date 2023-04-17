@@ -7,6 +7,7 @@ import StudyFolder from '../study-folders/StudyFolder';
 import { fetchStudySets } from '../../app/api/study-set';
 import { fetchFolders } from '../../app/api/folder';
 import CircularLoading from '../common/CircularLoading';
+import { useNavigate } from 'react-router-dom';
 
 const TABS = {
   STUDY_SET: 0,
@@ -16,6 +17,7 @@ const TABS = {
 let activeTabFlag;
 
 const LibraryTabs = ({ onClose }) => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(TABS.STUDY_SET);
   const [loading, setLoading] = useState(false);
   const [studySets, setStudySets] = useState([]);
@@ -57,6 +59,11 @@ const LibraryTabs = ({ onClose }) => {
     setActiveTab(newActiveTab);
   };
 
+  const handleClickStudySet = (index) => {
+    onClose();
+    navigate(`/study-set/${index}`);
+  };
+
   return (
     <StyledLibraryTabs>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -78,7 +85,12 @@ const LibraryTabs = ({ onClose }) => {
           }}
         >
           {studySets.map((studySet, index) => (
-            <StudySet key={index} type={1} studySet={studySet} />
+            <StudySet
+              key={index}
+              type={1}
+              studySet={studySet}
+              onClick={() => handleClickStudySet(index)}
+            />
           ))}
         </List>
         <Box sx={{ padding: '8px 15px' }}>
