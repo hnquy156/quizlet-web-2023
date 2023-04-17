@@ -14,6 +14,6 @@ export const fetchStudySets = () => {
         success: true,
         data: STUDY_SETS,
       });
-    }, 3000);
+    }, 400);
   });
 };

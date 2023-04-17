@@ -12,6 +12,6 @@ export const fetchFolders = () => {
         success: true,
         data: FOLDERS,
       });
-    }, 2500);
+    }, 1000);
   });
 };
