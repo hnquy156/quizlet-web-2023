@@ -141,3 +141,12 @@ export const StyledBriefCard = styled('div')(() => ({
   padding: 15,
   borderRadius: 5,
 }));
+
+export const StyledLogin = styled('div')(() => ({
+  width: '100%',
+  height: '100%',
+  minHeight: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  backgroundColor: 'white',
+}));

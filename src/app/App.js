@@ -14,6 +14,7 @@ import { USER_ROUTES } from '../utils/constant';
 import Folder from '../components/pages/user/Folder';
 import StudySetDetail from '../components/pages/study-set/StudySetDetail';
 import StudySetEdit from '../components/pages/study-set/StudySetEdit';
+import Login from '../components/pages/auth/Login';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       { path: `:username/${USER_ROUTES.FOLDER}/:folder`, element: <Folder /> },
     ],
   },
+  {
+    path: '/login',
+    element: <Login />
+  }
 ]);
 
 function App() {
