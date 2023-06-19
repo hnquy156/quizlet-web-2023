@@ -11,7 +11,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { StyledLink, StyledLogin } from '../../styles/styledComponents';
 import { loginSchema } from '../../../utils/schemas';
 import { useLoginMutation } from '../../../app/api';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const {
@@ -24,20 +25,30 @@ const Login = () => {
   const [login, { isLoading }] = useLoginMutation();
   const [errorMessage, setErrorMessage] = useState('');
   const timeoutRef = useRef();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleLogin = async (data) => {
     try {
-      const res = await login(data);
-      if (res.error) {
-        setErrorMessage('Username or Password is Invalid!');
-
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = setTimeout(() => setErrorMessage(''), 3000);
-      } else if (res.data?.success) {
-        console.log('🚀  res.data:', res.data.data);
+      const res = await login(data).unwrap();
+      if (res?.success) {
+        const { token } = res.data;
+        localStorage.setItem('token', token);
+        navigate('/');
       }
     } catch (error) {
-      console.log('🚀  error:', error);
+      console.error('handleLogin error:', error);
+      setErrorMessage('Username or Password is Invalid!');
+
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setErrorMessage(''), 3000);
     }
   };
 
