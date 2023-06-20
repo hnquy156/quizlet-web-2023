@@ -12,13 +12,17 @@ import {
 } from '@mui/material';
 import { useId, useState } from 'react';
 import { anchorOriginLeft } from '../../utils/constant';
+import { useLogoutMutation } from '../../app/api';
+import { useNavigate } from 'react-router-dom';
 
 const url = 'https://mui.com/static/images/avatar/2.jpg';
 
 const SettingButton = () => {
   const id = useId();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [logout] = useLogoutMutation();
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -28,10 +32,22 @@ const SettingButton = () => {
     setAnchorEl(null);
   };
 
+  const handleLogout = async () => {
+    try {
+      const res = await logout().unwrap();
+      if (res.success) {
+        localStorage.removeItem('token');
+        navigate('/login');
+      }
+    } catch (error) {
+      console.error('handleLogout', error);
+    }
+  };
+
   return (
     <>
-      <IconButton>
-        <Avatar alt="Logo" src={url} onClick={handleClick} />
+      <IconButton onClick={handleClick}>
+        <Avatar alt="Logo" src={url} />
       </IconButton>
       <Popover
         id={id}
@@ -65,7 +81,7 @@ const SettingButton = () => {
             <ListItemText primary="Settings" />
           </ListItemButton>
           <Divider sx={{ mb: 1, mt: 1 }} />
-          <ListItemButton>
+          <ListItemButton onClick={handleLogout}>
             <ListItemText primary="Logout" />
           </ListItemButton>
         </List>

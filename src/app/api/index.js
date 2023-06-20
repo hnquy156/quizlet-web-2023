@@ -24,6 +24,12 @@ export const quizletApi = createApi({
         body: { username, password },
       }),
     }),
+    logout: builder.mutation({
+      query: () => ({
+        url: 'auth/logout',
+        method: 'POST',
+      }),
+    }),
     getUserInfo: builder.query({
       query: () => ({
         url: 'users/info',
@@ -33,4 +39,5 @@ export const quizletApi = createApi({
   }),
 });
 
-export const { useLoginMutation, useLazyGetUserInfoQuery } = quizletApi;
+export const { useLoginMutation, useLazyGetUserInfoQuery, useLogoutMutation } =
+  quizletApi;
