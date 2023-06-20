@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   CircularProgress,
+  IconButton,
   TextField,
   Typography,
 } from '@mui/material';
@@ -13,6 +14,7 @@ import { loginSchema } from '../../../utils/schemas';
 import { useLoginMutation } from '../../../app/api';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const Login = () => {
   const {
@@ -24,6 +26,7 @@ const Login = () => {
   });
   const [login, { isLoading }] = useLoginMutation();
   const [errorMessage, setErrorMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const timeoutRef = useRef();
   const navigate = useNavigate();
 
@@ -50,6 +53,10 @@ const Login = () => {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => setErrorMessage(''), 3000);
     }
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -89,6 +96,18 @@ const Login = () => {
             placeholder="Password"
             helperText={errors?.password?.message}
             error={!!errors?.password}
+            type={showPassword ? 'text' : 'password'}
+            InputProps={{
+              endAdornment: (
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={toggleShowPassword}
+                  onMouseDown={toggleShowPassword}
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              ),
+            }}
             {...register('password')}
           />
         </Box>
