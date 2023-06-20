@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Box } from '@mui/material';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
 import { useLazyGetUserInfoQuery } from '../../app/api';
-import { STATUS_CODES } from '../../utils/constant';
 import { setUserInfo } from '../../app/slices/user';
 
 const Layout = () => {
-  const navigate = useNavigate();
   const [fetchUserInfo] = useLazyGetUserInfoQuery();
   const dispatch = useDispatch();
 
@@ -20,19 +18,10 @@ const Layout = () => {
 
   const getUserInfo = async () => {
     try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        navigate('/login');
-      }
-
       const res = await fetchUserInfo().unwrap();
       dispatch(setUserInfo(res.data));
     } catch (error) {
       console.error('getUserInfo error:', error);
-      if (error.status === STATUS_CODES.UNAUTHORIZED) {
-        navigate('/login');
-        localStorage.removeItem('token');
-      }
     }
   };
 

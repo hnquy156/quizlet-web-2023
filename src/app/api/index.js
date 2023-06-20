@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { STATUS_CODES } from '../../utils/constant';
 
 export { fetchStudySets } from './study-set';
 export { fetchFolders } from './folder';
@@ -14,6 +15,13 @@ export const quizletApi = createApi({
       }
 
       return headers;
+    },
+    responseHandler: (response) => {
+      if (response.status === STATUS_CODES.UNAUTHORIZED) {
+        localStorage.removeItem('token');
+        window.location.pathname = '/login';
+      }
+      return response.json();
     },
   }),
   endpoints: (builder) => ({
