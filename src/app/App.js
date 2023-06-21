@@ -15,6 +15,7 @@ import Folder from '../components/pages/user/Folder';
 import StudySetDetail from '../components/pages/study-set/StudySetDetail';
 import StudySetEdit from '../components/pages/study-set/StudySetEdit';
 import Login from '../components/pages/auth/Login';
+import Signup from '../components/pages/auth/Signup';
 
 const router = createBrowserRouter([
   {
@@ -46,8 +47,12 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <Login />
-  }
+    element: <Login />,
+  },
+  {
+    path: '/signup',
+    element: <Signup />,
+  },
 ]);
 
 function App() {

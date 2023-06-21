@@ -19,7 +19,8 @@ const passwordSchema = z
 const phoneSchema = z
   .string()
   .trim()
-  .regex(/^[0-9]*$/);
+  .min(1, 'Required')
+  .regex(/^[0-9]*$/, 'Phone is invalid');
 
 const emailSchema = z.string().trim().toLowerCase().email('Email is invalid');
 

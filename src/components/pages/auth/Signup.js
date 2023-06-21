@@ -10,26 +10,26 @@ import {
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { StyledLink, StyledLogin } from '../../styles/styledComponents';
-import { loginSchema } from '../../../utils/schemas';
-import { useLoginMutation } from '../../../app/api';
+import { SignupSchema } from '../../../utils/schemas';
+import { useSignupMutation } from '../../../app/api';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-const Login = () => {
+const Signup = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(SignupSchema),
   });
-  const [login, { isLoading }] = useLoginMutation();
+  const [signup, { isLoading }] = useSignupMutation();
   const [errorMessage, setErrorMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const timeoutRef = useRef();
   const navigate = useNavigate();
-
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -38,29 +38,33 @@ const Login = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleLogin = async (data) => {
+  const handleSignup = async (data) => {
     try {
-      const res = await login(data).unwrap();
+      console.log(data);
+      const res = await signup(data).unwrap();
       if (res?.success) {
-        const { token } = res.data;
-        localStorage.setItem('token', token);
-        navigate('/');
+        console.log('SUCCESS SIGNUP');
+        navigate('/login');
       }
     } catch (error) {
-      console.error('handleLogin error:', error);
-      setErrorMessage('Username or Password is Invalid!');
+      console.error('handleSignup error:', error);
+      setErrorMessage(error?.data?.message || 'Error Occured');
 
       clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => setErrorMessage(''), 3000);
     }
   };
 
-  const handleSignup = (data) => {
-    navigate('/signup');
+  const handleLogin = () => {
+    navigate('/login');
   };
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const toggleShowRepeatPassword = () => {
+    setShowRepeatPassword(!showRepeatPassword);
   };
 
   return (
@@ -73,21 +77,51 @@ const Login = () => {
         minWidth={600}
         mt={20}
         component="form"
-        onSubmit={handleSubmit(handleLogin)}
+        onSubmit={handleSubmit(handleSignup)}
       >
-        <Typography variant="h3">LOGIN</Typography>
+        <Typography variant="h3">Sign Up</Typography>
         {errorMessage && (
           <Box mt={3}>
             <Alert severity="error" onClose={() => {}}>
-              Username or Password is invalid!
+              {errorMessage}
             </Alert>
           </Box>
         )}
         <Box mt={3}>
           <TextField
-            label="Username or Email"
+            label="Name"
             fullWidth
-            placeholder="Username or Email"
+            placeholder="Name"
+            helperText={errors?.name?.message}
+            error={!!errors?.name}
+            {...register('name')}
+          />
+        </Box>
+        <Box mt={3}>
+          <TextField
+            label="Phone"
+            fullWidth
+            placeholder="Phone"
+            helperText={errors?.phone?.message}
+            error={!!errors?.phone}
+            {...register('phone')}
+          />
+        </Box>
+        <Box mt={3}>
+          <TextField
+            label="Email"
+            fullWidth
+            placeholder="Email"
+            helperText={errors?.email?.message}
+            error={!!errors?.email}
+            {...register('email')}
+          />
+        </Box>
+        <Box mt={3}>
+          <TextField
+            label="Username"
+            fullWidth
+            placeholder="Username"
             helperText={errors?.username?.message}
             error={!!errors?.username}
             {...register('username')}
@@ -115,6 +149,28 @@ const Login = () => {
             {...register('password')}
           />
         </Box>
+        <Box mt={3}>
+          <TextField
+            label="Confirm Password"
+            fullWidth
+            placeholder="Confirm Password"
+            helperText={errors?.repeat_password?.message}
+            error={!!errors?.repeat_password}
+            type={showRepeatPassword ? 'text' : 'password'}
+            InputProps={{
+              endAdornment: (
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={toggleShowRepeatPassword}
+                  onMouseDown={toggleShowRepeatPassword}
+                >
+                  {showRepeatPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              ),
+            }}
+            {...register('repeat_password')}
+          />
+        </Box>
         <Box marginLeft="auto" mb={3} mt={1}>
           <StyledLink>Forgot</StyledLink>
         </Box>
@@ -127,15 +183,15 @@ const Login = () => {
             endIcon={isLoading && <CircularProgress color="inherit" />}
             disabled={isLoading}
           >
-            Login
+            Sign Up
           </Button>
         </Box>
-        <Button size="large" variant="outlined" onClick={handleSignup}>
-          Create An Acount
+        <Button size="large" variant="outlined" onClick={handleLogin}>
+          Login
         </Button>
       </Box>
     </StyledLogin>
   );
 };
 
-export default Login;
+export default Signup;
