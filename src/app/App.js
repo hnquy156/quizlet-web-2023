@@ -5,6 +5,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Layout from '../components/common/Layout';
 import Home from '../components/pages/Home';
 import User from '../components/pages/user/User';
@@ -56,7 +57,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <ToastContainer newestOnTop position="top-right" />
+    </>
+  );
 }
 
 export default App;

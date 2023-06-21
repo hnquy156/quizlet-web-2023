@@ -5,6 +5,7 @@ import { store } from './app/slices/index';
 import App from './app/App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const container = document.getElementById('root');
 const root = createRoot(container);

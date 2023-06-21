@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'react-toastify';
 import { StyledLink, StyledLogin } from '../../styles/styledComponents';
 import { SignupSchema } from '../../../utils/schemas';
 import { useSignupMutation } from '../../../app/api';
@@ -40,10 +41,9 @@ const Signup = () => {
 
   const handleSignup = async (data) => {
     try {
-      console.log(data);
       const res = await signup(data).unwrap();
       if (res?.success) {
-        console.log('SUCCESS SIGNUP');
+        toast.success('Sign Up Successfully!');
         navigate('/login');
       }
     } catch (error) {

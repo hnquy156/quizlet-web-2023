@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'react-toastify';
 import { StyledLink, StyledLogin } from '../../styles/styledComponents';
 import { loginSchema } from '../../../utils/schemas';
 import { useLoginMutation } from '../../../app/api';
@@ -43,6 +44,7 @@ const Login = () => {
       const res = await login(data).unwrap();
       if (res?.success) {
         const { token } = res.data;
+        toast.success('Login Successfully!');
         localStorage.setItem('token', token);
         navigate('/');
       }
