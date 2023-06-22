@@ -1,4 +1,4 @@
-import { styled, Card, IconButton } from '@mui/material';
+import { styled, Card, IconButton, Typography } from '@mui/material';
 import { Input } from '@mui/joy';
 import { Link } from 'react-router-dom';
 import { DEFAULT_BORDER } from './styleConstant';
@@ -142,11 +142,19 @@ export const StyledBriefCard = styled('div')(() => ({
   borderRadius: 5,
 }));
 
-export const StyledLogin = styled('div')(() => ({
+export const StyledFormCard = styled('div')(() => ({
   width: '100%',
   height: '100%',
   minHeight: '100vh',
   display: 'flex',
   justifyContent: 'center',
+}));
+
+export const StyledLogin = styled(StyledFormCard)(() => ({
   backgroundColor: 'white',
+}));
+
+export const StyledText = styled(Typography)(({ bold }) => ({
+  fontSize: 20,
+  fontWeight: bold ? 'bold' : '',
 }));

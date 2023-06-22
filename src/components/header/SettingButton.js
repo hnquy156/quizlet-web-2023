@@ -44,6 +44,11 @@ const SettingButton = () => {
     }
   };
 
+  const handleViewProfile = () => {
+    navigate('/profile');
+    handleClose();
+  };
+
   return (
     <>
       <IconButton onClick={handleClick}>
@@ -68,7 +73,7 @@ const SettingButton = () => {
             />
           </ListItem>
           <Divider sx={{ mb: 1 }} />
-          <ListItemButton>
+          <ListItemButton onClick={handleViewProfile}>
             <ListItemIcon>
               <AccountCircle />
             </ListItemIcon>

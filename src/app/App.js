@@ -17,6 +17,7 @@ import StudySetDetail from '../components/pages/study-set/StudySetDetail';
 import StudySetEdit from '../components/pages/study-set/StudySetEdit';
 import Login from '../components/pages/auth/Login';
 import Signup from '../components/pages/auth/Signup';
+import Profile from '../components/pages/Profile';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
         element: <StudySetEdit />,
       },
       { path: `:username/${USER_ROUTES.FOLDER}/:folder`, element: <Folder /> },
+      { path: `profile`, element: <Profile /> },
     ],
   },
   {
